@@ -94,8 +94,31 @@ class War {
    }
 
 }
+function randomPick(value){
+  return Math.floor(Math.random() * value)
+}
 
 
+ //initiate the game
+const war = new War()
+for(let i = 0; i < 10; i++){
+  let viking = new Viking('Thor', (100 + randomPick(100)), (80 + randomPick(100)))
+  let saxon = new Saxon((100 + randomPick(100)), (80 + randomPick(100)))
+
+  war.vikingArmy.push(viking)
+  war.saxonArmy.push(saxon)
+}
+
+for(let i = 0; i < 1000; i++){
+  if(i%2===0){
+    war.vikingAttack()
+  }else war.saxonAttack()
+
+  if(war.saxonArmy.length === 0 || war,vikingArmy.length === 0){
+    console.log(`War is over - ${war.showStatus()}`)
+    break
+  }
+}
 
 
 // The following is required to make unit tests work.
